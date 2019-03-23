@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private GameManager instance;
+    public static GameObject instance;
     void Awake() {
         if (instance == null) {
-            instance = this;
-            DontDestroyOnLoad(this);
+            instance = this.gameObject;
+            DontDestroyOnLoad(this.gameObject);
         }
     }
 
@@ -23,9 +23,5 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
-    }
-    
-    public void StartSeekingGame() {
-        SceneManager.LoadSceneAsync("SeekingScene");
     }
 }
