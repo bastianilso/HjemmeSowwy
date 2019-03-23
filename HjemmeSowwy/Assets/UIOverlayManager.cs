@@ -18,8 +18,31 @@ public class UIOverlayManager : MonoBehaviour
     
     [SerializeField]
     private Text countDownText;
-    private float currentCountDown;
 
+    [SerializeField]
+    private GameObject clueOverlay;
+
+    [SerializeField]
+    private GameObject clueTemplate;
+    private float currentCountDown;
+    [SerializeField]
+    private GameObject winnerOverlay;
+
+    [SerializeField]
+    private Text winnerAnnouncement;
+
+    [SerializeField]
+    private Text subExplanation;
+
+    [SerializeField]
+    private Text skaterScore;
+
+    [SerializeField]
+    private Text hiderScore;
+
+    [SerializeField]
+    private Text roundText;
+    private string roundTextTemplate;
     private GameManager gameManager;
 
     // Start is called before the first frame update
@@ -30,6 +53,7 @@ public class UIOverlayManager : MonoBehaviour
         clueTextTemplate = clueText.text;
         currentCountDown = (float) gameManager.seekerCountDown;
         gameManager.PrepareSeekGame();
+        roundTextTemplate = roundText.text;
     }
 
     // Update is called once per frame
@@ -47,6 +71,57 @@ public class UIOverlayManager : MonoBehaviour
                 countDownText.gameObject.SetActive(true);
                 countDownText.text = Mathf.Round(currentCountDown).ToString();
             }
+        } else if (gameManager.seekerState == SeekerState.Seeking) {
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                if (!clueOverlay.activeSelf) {
+                    var newClue = Instantiate(clueTemplate);
+                    newClue.SetActive(true);
+                    newClue.transform.SetParent(clueOverlay.transform);
+                    var newClueText = newClue.GetComponentInChildren<Text>();
+                    newClueText.text = gameManager.RetreiveNextClue();
+                    clueOverlay.SetActive(true);
+                } else {
+                    clueOverlay.SetActive(false);
+                }
+            }
+        } else if (gameManager.seekerState == SeekerState.GameOver) {
+            winnerOverlay.SetActive(true);
+            clueOverlay.SetActive(false);
+            roundText.text = string.Format(roundTextTemplate, gameManager.roundNumber);
+            if (gameManager.winner == Winner.Timeout) {
+                winnerAnnouncement.text = "EVERYONE LOSES";
+                subExplanation.text = "SKATER RAN OUT OF TIME";
+                hiderScore.text = "LOST :C";
+                skaterScore.text = "LOST :C";
+                subExplanation.gameObject.SetActive(true);
+            } else if (gameManager.winner == Winner.WrongObject) {
+                winnerAnnouncement.text = "EVERYONE LOSES";
+                subExplanation.text = "SKATER CHOSE THE WRONG OBJECT";
+                hiderScore.text = "LOST :C";
+                skaterScore.text = "LOST :C";
+                subExplanation.gameObject.SetActive(true);
+            } else if (gameManager.winner == Winner.Hider) {
+                winnerAnnouncement.text = "HIDER WINS";
+                skaterScore.text = gameManager.currentSeekerScore.ToString();
+                hiderScore.text = gameManager.currentHiderScore.ToString();
+                subExplanation.gameObject.SetActive(false);
+            } else if (gameManager.winner == Winner.Skater) {
+                winnerAnnouncement.text = "SKATER WINS";
+                subExplanation.gameObject.SetActive(false);
+                skaterScore.text = gameManager.currentSeekerScore.ToString();
+                hiderScore.text = gameManager.currentHiderScore.ToString();
+            } else if (gameManager.winner == Winner.Tie) {
+                winnerAnnouncement.text = "TIE";
+                subExplanation.gameObject.SetActive(true);
+                subExplanation.text = "SKATER AND WINNER HAVE EQUAL AMOUNT OF POINTS";
+                skaterScore.text = gameManager.currentSeekerScore.ToString();
+                hiderScore.text = gameManager.currentHiderScore.ToString();
+            }
+
         }
+    }
+
+    public void startNextGame() {
+        gameManager.newGame();
     }
 }

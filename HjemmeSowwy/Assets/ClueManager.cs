@@ -7,7 +7,10 @@ using UnityEngine.UI;
 
 public class ClueManager : MonoBehaviour
 {
-
+    [SerializeField]
+    public Camera sceneCamera;
+    [SerializeField]
+    public GameObject otherPos;
     public int numberOfClues = 5;
 
     public List<Clue> clues;
@@ -23,6 +26,7 @@ public class ClueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sceneCamera.transform.position = otherPos.transform.position;
         gameManager = GameObject.Find("Managers").GetComponent<GameManager>();
         clues = new List<Clue>();
         clueInputFields = new List<InputField>();

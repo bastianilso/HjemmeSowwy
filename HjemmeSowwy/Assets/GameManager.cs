@@ -21,24 +21,32 @@ public struct TotalScore {
         GameOver
 
     }
+
+    public enum Winner {
+        WrongObject,
+        Timeout,
+        Hider,
+        Skater,
+        Tie
+
+    }
 public class GameManager : MonoBehaviour
 {
-
-
-
-    public string hidingObject;
+    public int hidingObject;
     public static GameObject instance;
     public List<Clue> clues;
-    private int cluesLeft = -1;
+    public int cluesLeft = 0;
     public TotalScore totalScore;
 
     public float seekTimeMax = 180;
     public float remainingTime = -1;
     public SeekerState seekerState;
+    public Winner winner = Winner.Timeout;
 
     public int currentSeekerScore = 0;
     public int currentHiderScore = 0;
     public int seekerCountDown = 5;
+    public int roundNumber = 0;
 
     void Awake() {
         if (instance == null) {
@@ -50,11 +58,17 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        newGame();
+    }
+
+    public void newGame() {
         clues = new List<Clue>();
         totalScore = new TotalScore();
         totalScore.seekerScore = 0;
         totalScore.hiderScore = 0;
         totalScore.rounds = 0;
+        roundNumber++;
+        seekerState = SeekerState.Standby;
     }
 
     // Update is called once per frame
@@ -71,17 +85,18 @@ public class GameManager : MonoBehaviour
                 currentHiderScore = Mathf.RoundToInt((seekTimeMax - remainingTime)*100);
             } else {
                 seekerState = SeekerState.GameOver;
+                winner = Winner.Timeout;
             }
         } else if (seekerState == SeekerState.GameOver) {
             // Trigger High score table
             // Calculate number of clues read
             // Award points based on that
             // Calculate new TotalScore
-            seekerState = SeekerState.Standby;
+            //seekerState = SeekerState.Standby;
         }
     }
 
-    public void SetHidingObject(string id) {
+    public void SetHidingObject(int id) {
         hidingObject = id;
     }
 
@@ -102,6 +117,7 @@ public class GameManager : MonoBehaviour
                 updatedClue.read = true;
                 cluesLeft--;
                 clues[i] = updatedClue;
+                break;
             }
         }
         return nextClue;
@@ -126,6 +142,22 @@ public class GameManager : MonoBehaviour
 
     public void StartSeekGame() {
         seekerState = SeekerState.Seeking;
+    }
+
+    public void SetChosenObject(int id) {
+        seekerState = SeekerState.GameOver;
+        Debug.Log("Id: " + id.ToString() + " obj: " + hidingObject.ToString());
+        if (id == hidingObject) {
+            if (currentSeekerScore > currentHiderScore) {
+                winner = Winner.Skater;
+            } else if (currentHiderScore > currentSeekerScore) {
+                winner = Winner.Hider;
+            } else {
+                winner = Winner.Tie;
+            }
+        } else {
+            winner = Winner.WrongObject;
+        }
     }
 
 }
