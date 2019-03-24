@@ -261,9 +261,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Previous
-
-'
+  m_Text: 
 --- !u!222 &99074322
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -508,11 +506,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: 957e7cd50547ac6a68fe9be2e5e4cb92, type: 3}
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -520,7 +518,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Choose Hiding Place
+  m_Text: CHOOSE
 --- !u!222 &484848261
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1118,9 +1116,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Sprite: {fileID: 21300000, guid: 26d99223e2edf2385b83c9fcf7708600, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1170,7 +1168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 480, y: -284.85703}
+  m_AnchoredPosition: {x: 480, y: -268.26}
   m_SizeDelta: {x: 899.29, y: 277.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &864425146
@@ -1415,7 +1413,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Next
+  m_Text: 
 --- !u!222 &955222467
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1707,9 +1705,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Sprite: {fileID: 21300000, guid: 0fca2e96bfa20e0b7b1b279d46d30de4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1760,8 +1758,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 480, y: -446.90555}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 480, y: -434.35}
+  m_SizeDelta: {x: 209.6, y: 54.68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1107797233
 MonoBehaviour:
@@ -2218,11 +2216,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: 957e7cd50547ac6a68fe9be2e5e4cb92, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -2230,7 +2228,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "StartSeekingGame\x13"
+  m_Text: SEEKER GET READY
 --- !u!222 &1609543899
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2418,7 +2416,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 480, y: -115.508514}
+  m_AnchoredPosition: {x: 480, y: -107.21001}
   m_SizeDelta: {x: 368.82, y: 44.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1868788359
@@ -2500,7 +2498,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 212.21, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1978374899
 MonoBehaviour:
