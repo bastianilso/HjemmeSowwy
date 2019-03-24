@@ -77,11 +77,12 @@ public class GameManager : MonoBehaviour
         if (seekerState == SeekerState.Standby) {
             // do nothing
         } else if (seekerState == SeekerState.Countdown) {
+            currentSeekerScore = Mathf.RoundToInt(remainingTime*100);
             // count down
         } else if (seekerState == SeekerState.Seeking) {
             if (remainingTime > 0f) {
                 remainingTime -= Time.deltaTime;
-                currentSeekerScore = Mathf.RoundToInt(remainingTime*100);
+                currentSeekerScore -= Mathf.RoundToInt(Time.deltaTime*100);
                 currentHiderScore = Mathf.RoundToInt((seekTimeMax - remainingTime)*100);
             } else {
                 seekerState = SeekerState.GameOver;
@@ -116,6 +117,7 @@ public class GameManager : MonoBehaviour
                 updatedClue.clueText = clues[i].clueText;
                 updatedClue.read = true;
                 cluesLeft--;
+                currentSeekerScore -= 1000;
                 clues[i] = updatedClue;
                 break;
             }
