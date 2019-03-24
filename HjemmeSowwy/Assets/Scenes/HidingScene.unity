@@ -1974,8 +1974,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objs: []
   objIndex: 0
-  objectScale: 1
-  chosenObjectID: 
+  objectScale: 200
+  chosenObjectID: 0
 --- !u!4 &1318852785
 Transform:
   m_ObjectHideFlags: 0

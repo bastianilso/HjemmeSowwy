@@ -122,20 +122,20 @@ public class UIOverlayManager : MonoBehaviour
                 skaterScore.text = gameManager.currentSeekerScore.ToString();
                 hiderScore.text = gameManager.currentHiderScore.ToString();
                 subExplanation.gameObject.SetActive(false);
-                if (clueStats[0] == 0) {
+                if (clueStats[0] == clueStats[1]) {
                     unusuedCluesPoints.gameObject.SetActive(false);
                 } else {
-                    unusuedCluesPoints.text = string.Format(unusedCluesPointsTemplate, 1000*clueStats[0], clueStats[0]); 
+                    unusuedCluesPoints.text = string.Format(unusedCluesPointsTemplate, 1000*((clueStats[1]-clueStats[0])), clueStats[0]); 
                 }
             } else if (gameManager.winner == Winner.Skater) {
                 winnerAnnouncement.text = "SKATER WINS";
                 subExplanation.gameObject.SetActive(false);
                 skaterScore.text = gameManager.currentSeekerScore.ToString();
                 hiderScore.text = gameManager.currentHiderScore.ToString();
-                if (clueStats[0] == 0) {
+                if (clueStats[0] == clueStats[1]) {
                     unusuedCluesPoints.gameObject.SetActive(false);
                 } else {
-                    unusuedCluesPoints.text = string.Format(unusedCluesPointsTemplate, 1000*clueStats[0], clueStats[0]); 
+                    unusuedCluesPoints.text = string.Format(unusedCluesPointsTemplate, 1000*((clueStats[1]-clueStats[0])), clueStats[0]); 
                 }
             } else if (gameManager.winner == Winner.Tie) {
                 winnerAnnouncement.text = "TIE";

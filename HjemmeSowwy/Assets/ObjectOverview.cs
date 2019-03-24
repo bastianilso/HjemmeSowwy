@@ -10,7 +10,7 @@ public class ObjectOverview : MonoBehaviour
     public GameObject[] objs;
     public int objIndex = 0;
     GameObject currentShownObject;
-    public float objectScale = 1f;
+    public float objectScale = 200f;
 
     private GameManager gameManager;
     public int chosenObjectID;
@@ -22,12 +22,13 @@ public class ObjectOverview : MonoBehaviour
         objs = Resources.LoadAll<GameObject>("HidingObjects");
         currentShownObject = Instantiate(objs[objIndex], this.transform.position, this.transform.rotation) as GameObject;
         currentShownObject.transform.parent = this.transform;
-        currentShownObject.transform.localScale = new Vector3(objectScale, objectScale, objectScale);
+        currentShownObject.transform.localScale = new Vector3(currentShownObject.transform.localScale.x * objectScale, currentShownObject.transform.localScale.y * objectScale, currentShownObject.transform.localScale.z * objectScale);
+
     }
 
     void Update()
     {
-        currentShownObject.transform.eulerAngles = new Vector3 (currentShownObject.transform.eulerAngles.x, currentShownObject.transform.eulerAngles.y+0.3f, currentShownObject.transform.eulerAngles.z);
+        currentShownObject.transform.eulerAngles = new Vector3 (-90f , currentShownObject.transform.eulerAngles.y+Mathf.Sin(currentShownObject.transform.eulerAngles.y)*10, currentShownObject.transform.eulerAngles.z);
     }
 
     public void NextHidingObject() {
@@ -39,7 +40,7 @@ public class ObjectOverview : MonoBehaviour
         }
         currentShownObject = Instantiate(objs[objIndex], this.transform.position, this.transform.rotation) as GameObject;
         currentShownObject.transform.parent = this.transform;
-        currentShownObject.transform.localScale = new Vector3(objectScale, objectScale, objectScale);
+        currentShownObject.transform.localScale = new Vector3(currentShownObject.transform.localScale.x * objectScale, currentShownObject.transform.localScale.y * objectScale, currentShownObject.transform.localScale.z * objectScale);
     }
 
     public void PreviousHidingObject() {
@@ -51,7 +52,7 @@ public class ObjectOverview : MonoBehaviour
         }
         currentShownObject = Instantiate(objs[objIndex], this.transform.position, this.transform.rotation) as GameObject;
         currentShownObject.transform.parent = this.transform;
-        currentShownObject.transform.localScale = new Vector3(objectScale, objectScale, objectScale);
+        currentShownObject.transform.localScale = new Vector3(currentShownObject.transform.localScale.x * objectScale, currentShownObject.transform.localScale.y * objectScale, currentShownObject.transform.localScale.z * objectScale);
     }
 
     public void SetHidingObject() {
