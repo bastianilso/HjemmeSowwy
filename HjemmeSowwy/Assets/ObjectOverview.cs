@@ -13,7 +13,7 @@ public class ObjectOverview : MonoBehaviour
     public float objectScale = 1f;
 
     private GameManager gameManager;
-    public string chosenObjectID;
+    public int chosenObjectID;
     
     // Start is called before the first frame update
     void Start()

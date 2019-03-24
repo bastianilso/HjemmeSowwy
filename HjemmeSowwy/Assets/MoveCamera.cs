@@ -10,6 +10,7 @@ public class MoveCamera : MonoBehaviour
     public float speedH = 2.0f;
     public float speedV = 2.0f;
     public float speedKey = 2.0f;
+    public float constantSpeed = 1.0f;
 
     private float yaw = 0.0f;
     private float pitch = 0.0f;
@@ -23,7 +24,7 @@ public class MoveCamera : MonoBehaviour
     void Update()
     {
       Vector3 forward = transform.TransformDirection(Vector3.forward);
-      float curSpeed = speedKey * Input.GetAxis("Vertical");
+      float curSpeed = speedKey * Input.GetAxis("Vertical") + constantSpeed;
       controller.SimpleMove(forward * curSpeed); 
 
       yaw += speedH * Input.GetAxis("Mouse X");
