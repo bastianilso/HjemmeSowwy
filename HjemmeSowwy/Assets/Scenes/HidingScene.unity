@@ -2125,9 +2125,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneCamera: {fileID: 534669904}
   otherPos: {fileID: 226254688}
-  numberOfClues: 6
+  numberOfClues: 4
   clueInputFields: []
   clueInputFieldTemplate: {fileID: 952774312}
+  continueButton: {fileID: 1107797233}
 --- !u!114 &1577833778
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class ClueManager : MonoBehaviour
     public Camera sceneCamera;
     [SerializeField]
     public GameObject otherPos;
-    public int numberOfClues = 5;
+    public int numberOfClues = 4;
 
     public List<Clue> clues;
 
@@ -20,6 +20,9 @@ public class ClueManager : MonoBehaviour
     
     [SerializeField]
     public InputField clueInputFieldTemplate;
+
+    [SerializeField]
+    public Button continueButton;
 
     private GameManager gameManager;
 
@@ -35,14 +38,24 @@ public class ClueManager : MonoBehaviour
             inputField.gameObject.transform.SetParent(clueInputFieldTemplate.transform.parent);
             inputField.gameObject.SetActive(true);
             var children = inputField.gameObject.GetComponentsInChildren<Text>();
-            children[0].text = "Write Clue " + i + "..";
+            children[0].text = "Write Clue..";
             clueInputFields.Add(inputField);
         }
     }
 
+    void Update() {
+        bool shouldContinue = true;
+        foreach (var clueField in clueInputFields) {
+                if (string.IsNullOrEmpty(clueField.text)) {
+                    shouldContinue = false;
+                }   
+        }
+        continueButton.interactable = shouldContinue;
+    }
+
     public void SaveClues() {
         foreach (var clueField in clueInputFields) {
-            gameManager.AddClue(clueField.text);
+                gameManager.AddClue(clueField.text);
         }
     }
 }

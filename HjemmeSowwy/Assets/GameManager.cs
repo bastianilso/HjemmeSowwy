@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     public int currentSeekerScore = 0;
     public int currentHiderScore = 0;
-    public int seekerCountDown = 5;
+    public int seekerCountDown = 10;
     public int roundNumber = 0;
 
     void Awake() {
@@ -110,6 +110,7 @@ public class GameManager : MonoBehaviour
 
     public string RetreiveNextClue() {
         string nextClue = string.Empty;
+        Shuffle<Clue>(clues);
         for (int i = 0; i < clues.Count; i++) {
             if (!clues[i].read) {
                 nextClue = clues[i].clueText;
@@ -161,5 +162,19 @@ public class GameManager : MonoBehaviour
             winner = Winner.WrongObject;
         }
     }
+
+	public static void Shuffle<T>(IList<T> list)
+	{
+		System.Random rng = new System.Random();
+		int n = list.Count;
+		while (n > 1)
+		{
+			n--;
+			int k = rng.Next(n + 1);
+			T value = list[k];
+			list[k] = list[n];
+			list[n] = value;
+		}
+	}
 
 }
